@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diky Firerza | Portofolio</title>
+  <meta name="description" content="Portofolio Diky Firerza, mahasiswa Sistem Informasi Universitas Tanjungpura. Antusias web development dan Python.">
+  <meta name="theme-color" content="#07070a">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='Logo serigala hitam Diky Firerza'%3E  %3Cdefs%3E    %3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E      %3Cstop offset='0' stop-color='%23e6e6ee'/%3E      %3Cstop offset='1' stop-color='%233a3a42'/%3E    %3C/linearGradient%3E  %3C/defs%3E  %3Crect width='100' height='100' rx='22' fill='%230a0a0d'/%3E  %3Cg transform='translate(10 8) scale(.8)'%3E    %3Cpolygon fill='url(%23g)' points='16,8 38,28 62,28 84,8 88,46 76,70 58,90 50,94 42,90 24,70 12,46'/%3E    %3Cpolygon fill='%230a0a0d' opacity='.55' points='24,20 34,31 25,42 19,38'/%3E    %3Cpolygon fill='%230a0a0d' opacity='.55' points='76,20 66,31 75,42 81,38'/%3E    %3Cpolygon fill='%2316161b' opacity='.45' points='40,62 60,62 56,84 50,90 44,84'/%3E    %3Cpolygon fill='%230a0a0d' points='27,44 44,52 30,54'/%3E    %3Cpolygon fill='%230a0a0d' points='73,44 56,52 70,54'/%3E    %3Cpolygon fill='%230a0a0d' points='43,77 57,77 50,86'/%3E    %3Cpath d='M50 54 L50 77' stroke='%230a0a0d' stroke-width='2' opacity='.5'/%3E  %3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root{
+  --bg:#07070a; --panel:#0f0f14; --panel2:#15151b; --line:#25252d;
+  --text:#e9e9ef; --muted:#8c8c98; --silver:#c9c9d4; --white:#fff;
+  --r:16px; --maxw:1100px;
+  --head:'Rajdhani','Segoe UI',system-ui,sans-serif;
+  --body:'Inter','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.15;letter-spacing:.02em}
+.muted{color:var(--muted)} .small{font-size:.85rem}
+[hidden]{display:none!important}
+
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.fog{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60vw 40vw at 15% 20%,rgba(120,120,135,.13),transparent 60%),
+    radial-gradient(50vw 40vw at 85% 70%,rgba(90,90,105,.12),transparent 60%);
+  animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
+main,.nav,.foot{position:relative;z-index:1}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:12px clamp(16px,4vw,40px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(7,7,10,.85);backdrop-filter:blur(10px);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:1.3rem}
+.brand b{color:var(--muted)}
+.logo{width:34px;height:34px;filter:drop-shadow(0 0 6px rgba(220,220,235,.25))}
+.menu{display:flex;gap:6px;align-items:center}
+.menu a{padding:8px 12px;border-radius:999px;font-size:.92rem;color:var(--muted);transition:.2s}
+.menu a:hover,.menu a.active{color:var(--white);background:var(--panel2)}
+.menu a.pill{border:1px solid var(--silver);color:var(--white)}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;align-items:center}
+.burger i{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
+.burger[aria-expanded=true] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded=true] i:nth-child(2){opacity:0}
+.burger[aria-expanded=true] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* BUTTON */
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;border:1px solid var(--silver);background:transparent;color:var(--white);
+  font:600 .95rem var(--body);cursor:pointer;transition:.25s;text-align:center}
+.btn.primary{background:linear-gradient(135deg,#e9e9ef,#9a9aa6);color:#0a0a0d;border-color:transparent}
+.btn.primary:hover{box-shadow:0 0 24px rgba(220,220,235,.35);transform:translateY(-2px)}
+.btn.ghost:hover{background:var(--panel2);transform:translateY(-2px)}
+.btn.small{padding:7px 16px;font-size:.82rem}
+
+/* HERO */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+  max-width:var(--maxw);margin:0 auto;padding:110px clamp(16px,4vw,40px) 70px;position:relative}
+.hero>*{min-width:0}
+.tag{display:inline-block;font:500 .78rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:700;background:linear-gradient(180deg,#fff,#7d7d89);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.glitch:hover{animation:glitch .4s steps(2) 2}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}100%{transform:translate(0)}}
+.tagline{margin-top:14px;font-size:clamp(1rem,2.4vw,1.3rem);color:var(--silver)}
+.typed{color:var(--white);font-weight:600}
+.caret{color:var(--muted);animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.lead{margin-top:12px;color:var(--muted);max-width:46ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+.hero-photo{display:flex;flex-direction:column;align-items:center;gap:16px}
+.photo-wrap{position:relative;width:min(340px,72vw);aspect-ratio:1}
+.ring{position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(200,200,215,.45);animation:spin 28s linear infinite}
+.ring.r2{inset:-30px;border-style:solid;border-color:rgba(120,120,135,.25);animation-duration:44s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.frame{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:2px solid var(--silver);
+  background:radial-gradient(circle at 50% 35%,#24242c,#0b0b0f);box-shadow:0 0 50px rgba(190,190,210,.18),inset 0 0 40px rgba(0,0,0,.7);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.frame img{width:100%;height:100%;object-fit:cover}
+.frame .placeholder{position:absolute;inset:18%;width:64%;height:64%;display:none}
+.photo-wrap.empty .frame img{display:none}
+.photo-wrap.empty .frame .placeholder{display:block}
+.eye{animation:eye 4s ease-in-out infinite}
+@keyframes eye{0%,90%,100%{fill:#0a0a0d}93%{fill:#f4f4fa}}
+.photo-tools{display:flex;gap:8px}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:1.5px solid var(--muted);border-radius:14px}
+.scroll-hint span{position:absolute;top:7px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--silver);border-radius:3px;animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+/* SECTIONS */
+.section{max-width:var(--maxw);margin:0 auto;padding:90px clamp(16px,4vw,40px)}
+.head{margin-bottom:34px}
+.idx{font:500 .78rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.head h2{font-size:clamp(2rem,5vw,3rem);margin:6px 0 4px;background:linear-gradient(90deg,#fff,#7d7d89);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grid.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:.3s}
+.card:hover{border-color:#44444f}
+.card p+p{margin-top:12px}
+.card h3,.sub{font-size:1.35rem;margin:20px 0 10px}
+.card h3:first-child,.sub:first-child{margin-top:0}
+.sub{margin-top:28px}
+.facts{list-style:none;margin-top:20px;display:grid;gap:8px}
+.facts li{display:flex;gap:12px;font-size:.92rem;border-top:1px solid var(--line);padding-top:8px}
+.facts b{min-width:90px;color:var(--muted);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span,.tags span{border:1px solid var(--line);background:var(--bg);padding:5px 13px;border-radius:999px;font-size:.82rem;color:var(--silver)}
+
+.skill{margin-top:18px}
+.skill .row{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;margin-bottom:6px}
+.skill em{font-style:normal;color:var(--muted)}
+.bar{height:8px;background:var(--bg);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#55555f,#f0f0f6);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.reveal.in .bar i{width:var(--lv)}
+.note{margin-top:18px}
+
+.timeline{list-style:none;border-left:2px solid var(--line);padding-left:24px;display:grid;gap:22px}
+.timeline li{position:relative}
+.timeline li::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--silver)}
+.timeline time{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.timeline h4{font-size:1.15rem;margin:2px 0}
+.timeline p{color:var(--muted);font-size:.92rem}
+.awards{list-style:none;display:grid;gap:14px}
+.awards li{display:flex;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:.3s}
+.awards li:hover{transform:translateX(6px);border-color:#44444f}
+.awards .ic{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--bg);border:1px solid var(--silver);color:var(--white)}
+.awards h4{font-size:1.1rem}.awards p{color:var(--muted);font-size:.9rem}
+
+/* CARDS (proyek, kegiatan) */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.item{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.3s;position:relative}
+.item:hover{transform:translateY(-6px);border-color:#4a4a56;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.item .thumb{aspect-ratio:16/9;background:radial-gradient(circle at 50% 40%,#22222a,#0b0b0f);display:grid;place-items:center}
+.item .thumb img{width:100%;height:100%;object-fit:cover}
+.item .thumb svg{width:64px;height:64px;opacity:.55}
+.item .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.item h4{font-size:1.25rem}
+.item p{color:var(--muted);font-size:.92rem}
+.item .meta{font-size:.78rem;color:var(--silver);letter-spacing:.06em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.item .go{margin-top:auto;padding-top:6px;font-weight:600;font-size:.9rem;color:var(--white)}
+.item .go:hover{text-decoration:underline}
+.more{margin-top:28px;text-align:center}
+.empty-note{padding:26px;text-align:center;border:1px dashed var(--line);border-radius:var(--r)}
+
+.gallery{columns:3 240px;column-gap:16px}
+.shot{break-inside:avoid;margin-bottom:16px;position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:var(--panel)}
+.shot img{width:100%;transition:.5s;filter:grayscale(.55)}
+.shot:hover img{transform:scale(1.05);filter:grayscale(0)}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:.85rem;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.shot figcaption small{display:block;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}
+
+/* FORM */
+.form{display:grid;gap:14px}
+.form label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+input,textarea,select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:.95rem;transition:.2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--silver);box-shadow:0 0 0 3px rgba(200,200,215,.12)}
+input[type=file]{padding:8px}
+textarea{resize:vertical}
+
+.links{list-style:none;display:grid;gap:12px}
+.links a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);transition:.3s;flex-wrap:wrap}
+.links a:hover{transform:translateX(8px);border-color:var(--silver);background:var(--panel2)}
+.links b{font-family:var(--head);font-size:1.15rem}
+.links span{color:var(--muted);font-size:.92rem;word-break:break-all}
+
+.foot{display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 16px 100px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);text-align:center}
+
+
+/* DOCK */
+.dock{position:fixed;right:14px;bottom:14px;z-index:60;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;
+  background:rgba(15,15,20,.88);backdrop-filter:blur(10px);border:1px solid var(--line);padding:6px;border-radius:999px;max-width:calc(100vw - 28px)}
+.dock button{background:transparent;color:var(--silver);border:0;border-radius:999px;padding:8px 13px;font:500 .82rem var(--body);cursor:pointer;transition:.2s}
+.dock button:hover{background:var(--panel2);color:var(--white)}
+.dock button[aria-pressed=true]{background:#e9e9ef;color:#0a0a0d}
+.dock input[type=range]{width:70px;padding:0;accent-color:#c9c9d4}
+
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);color:var(--text);padding:14px;max-width:min(92vw,900px);margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+dialog img{max-height:78vh;margin:auto;border-radius:10px}
+dialog p{text-align:center;margin-top:8px;color:var(--muted)}
+#lbClose{position:absolute;right:10px;top:6px;background:none;border:0;color:var(--white);font-size:2rem;cursor:pointer}
+#demoDlg{width:min(94vw,980px);height:88vh;max-width:none;padding:0;overflow:hidden}
+#demoDlg[open]{display:flex;flex-direction:column}
+.demo-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);font-family:var(--head);font-size:1.15rem}
+.demo-bar button{background:none;border:0;color:var(--white);font-size:1.8rem;line-height:1;cursor:pointer}
+#demoFrame{flex:1;width:100%;border:0;background:#fff}
+button.go{background:none;border:0;padding:6px 0 0;font:600 .9rem var(--body);cursor:pointer;text-align:left}
+#toast{position:fixed;left:50%;bottom:86px;transform:translate(-50%,20px);background:#e9e9ef;color:#0a0a0d;padding:10px 18px;border-radius:999px;font-size:.88rem;opacity:0;pointer-events:none;transition:.3s;z-index:90;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* EFEK DIMATIKAN (ringan) */
+body.no-fx #bg,body.no-fx .fog{display:none}
+body.no-fx *,body.no-fx *::before,body.no-fx *::after{animation:none!important}
+body.no-fx .reveal{opacity:1;transform:none;transition:none}
+body.no-fx .bar i{transition:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  *{animation:none!important}
+}
+
+/* RESPONSIF */
+@media (max-width:860px){
+  .burger{display:flex}
+  .menu{position:fixed;top:60px;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;padding:12px 16px 18px;
+    background:rgba(7,7,10,.97);border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s;z-index:-1}
+  .menu.open{transform:none}
+  .menu a{padding:12px 14px;border-radius:10px}
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:96px;gap:34px}
+  .hero-text{order:2}.hero-photo{order:1}
+  .lead{margin-inline:auto}.cta{justify-content:center}
+  .scroll-hint{display:none}
+  .grid.two{grid-template-columns:1fr}
+  .section{padding:64px 16px}
+  .gallery{columns:2 150px}
+  .dock button span{display:none}
+  .dock input[type=range]{width:56px}
+}
+@media (max-width:420px){.gallery{columns:1}.facts li{flex-direction:column;gap:2px}}
+
+
+/* PEMUTAR MUSIK */
+.dock .sep{width:1px;height:20px;background:var(--line)}
+.playlist{position:fixed;right:14px;bottom:70px;z-index:61;width:min(340px,calc(100vw - 28px));background:rgba(15,15,20,.96);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:10px}
+.pl-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-family:var(--head);font-size:1.15rem}
+.pl-head small{color:var(--muted);font:400 .78rem var(--body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:58%}
+#trackList{list-style:none;display:grid;gap:4px;max-height:34vh;overflow:auto}
+#trackList li{display:flex;align-items:center;border:1px solid transparent;border-radius:10px}
+#trackList li.on{background:var(--panel2);border-color:var(--line)}
+#trackList li.empty{padding:8px 4px}
+#trackList .tk{flex:1;min-width:0;display:flex;gap:10px;align-items:center;text-align:left;padding:9px 10px;background:none;border:0;color:var(--silver);font:500 .88rem var(--body);cursor:pointer;border-radius:10px}
+#trackList .tk:hover{color:var(--white)}
+#trackList .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#trackList small{color:var(--muted);font-size:.72rem}
+#trackList li.miss .nm{opacity:.45}
+#trackList .rm{width:30px;height:30px;margin-right:4px;border-radius:50%;border:0;background:none;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer}
+#trackList .rm:hover{background:#2a1515;color:#fff}
+.upload{cursor:pointer}
+.acts{margin-top:auto;display:flex;gap:18px;flex-wrap:wrap}
+.acts .go{margin-top:0}
+#codeDlg{width:min(94vw,820px);max-width:none;padding:0;overflow:hidden}
+#codeDlg[open]{display:flex;flex-direction:column;max-height:88vh}
+.code-actions{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line)}
+#codeDlg pre{flex:1;overflow:auto;padding:16px;background:var(--bg);color:var(--silver);font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4}
+</style>
+</head>
+<body>
+
+<!-- Simbol logo serigala (dipakai ulang) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6e6ee"/>
+      <stop offset="1" stop-color="#3a3a42"/>
+    </linearGradient>
+  </defs>
+  <symbol id="wolf" viewBox="0 0 100 100">
+    <polygon fill="url(#wg)" points="16,8 38,28 62,28 84,8 88,46 76,70 58,90 50,94 42,90 24,70 12,46"/>
+    <polygon fill="#0a0a0d" opacity=".55" points="24,20 34,31 25,42 19,38"/>
+    <polygon fill="#0a0a0d" opacity=".55" points="76,20 66,31 75,42 81,38"/>
+    <polygon fill="#16161b" opacity=".45" points="40,62 60,62 56,84 50,90 44,84"/>
+    <polygon class="eye" fill="#0a0a0d" points="27,44 44,52 30,54"/>
+    <polygon class="eye" fill="#0a0a0d" points="73,44 56,52 70,54"/>
+    <polygon fill="#0a0a0d" points="43,77 57,77 50,86"/>
+    <path d="M50 54 L50 77" stroke="#0a0a0d" stroke-width="2" opacity=".5"/>
+  </symbol>
+</svg>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="fog" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header class="nav" id="nav">
+  <a class="brand" href="#beranda" aria-label="Beranda">
+    <svg class="logo" viewBox="0 0 100 100"><use href="#wolf"/></svg>
+    <span>Diky<b>.</b>Firerza</span>
+  </a>
+  <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  <nav class="menu" id="menu">
+    <a href="#beranda">Beranda</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#pengalaman">Pengalaman</a>
+    <a href="#proyek">Karya</a>
+    <a href="#kegiatan">Kegiatan SI</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak" class="pill">Kontak</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+  <div class="hero-text">
+    <p class="tag">H1101261071 &middot; Universitas Tanjungpura</p>
+    <h1 class="glitch" data-text="Diky Firerza">Diky Firerza</h1>
+    <p class="tagline">Mahasiswa Sistem Informasi | Antusias <span id="typed" class="typed">Web Development</span><span class="caret">|</span></p>
+    <p class="lead">Belajar merancang, membangun, dan mengoptimalkan website agar nyaman dipakai.</p>
+    <div class="cta">
+      <a class="btn primary" href="#kontak">Hubungi Saya</a>
+      <a class="btn ghost" href="#proyek">Lihat Karya</a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="photo-wrap empty" id="photoWrap">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="frame">
+        <img id="profilePhoto" alt="Foto profil Diky Firerza" decoding="async">
+        <svg class="placeholder" viewBox="0 0 100 100" aria-hidden="true"><use href="#wolf"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#tentang" aria-label="Gulir ke bawah"><span></span></a>
+</section>
+
+<!-- TENTANG -->
+<section class="section" id="tentang">
+  <div class="head reveal"><span class="idx">01 / Tentang</span><h2>Tentang Saya</h2></div>
+  <div class="grid two">
+    <div class="card reveal">
+      <p>Saya merupakan mahasiswa Program Studi Sistem Informasi di Universitas Tanjungpura yang memiliki antusiasme tinggi dalam mempelajari web programming. Saya tertarik untuk memahami bagaimana sebuah website dirancang, dikembangkan, dan dioptimalkan agar dapat memberikan pengalaman yang baik bagi penggunanya.</p>
+      <p>Saya senang mempelajari hal-hal baru, mengembangkan kemampuan dalam pemrograman, serta mencoba menerapkan ide-ide kreatif menjadi sebuah karya digital. Dengan semangat belajar dan kemauan untuk terus berkembang, saya berharap dapat meningkatkan keterampilan di bidang web development, memperluas wawasan teknologi, dan menciptakan solusi digital yang bermanfaat bagi masyarakat.</p>
+      <ul class="facts">
+        <li><b>Pendidikan</b><span>S1 Sistem Informasi, Universitas Tanjungpura</span></li>
+        <li><b>NIM</b><span>H1101261071</span></li>
+        <li><b>Minat</b><span>Web programming, Python, ide kreatif digital</span></li>
+      </ul>
+      <h3>Hobi</h3>
+      <div class="chips">
+        <span>Berolahraga</span><span>Belajar hal baru</span><span>Gaming</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>Keahlian</h3>
+      <p class="muted small">Tingkat penguasaan saat ini. Terus naik seiring belajar.</p>
+      <!-- Ubah angka --lv di bawah ini untuk mengganti persentase -->
+      <div class="skill" style="--lv:50%"><div class="row"><span>Python</span><em>50%</em></div><div class="bar"><i></i></div></div>
+      <div class="skill" style="--lv:20%"><div class="row"><span>Bahasa pemrograman lain (HTML, CSS, JS, dll.)</span><em>20%</em></div><div class="bar"><i></i></div></div>
+      <div class="skill" style="--lv:15%"><div class="row"><span>UI/UX</span><em>15%</em></div><div class="bar"><i></i></div></div>
+      <p class="muted small note">Bahasa lain dan UI/UX masih dalam proses belajar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PENGALAMAN -->
+<section class="section" id="pengalaman">
+  <div class="head reveal"><span class="idx">02 / Riwayat</span><h2>Pengalaman &amp; Riwayat</h2></div>
+  <div class="grid two">
+    <div class="reveal">
+      <h3 class="sub">Organisasi &amp; Pendidikan</h3>
+      <ol class="timeline">
+        <li><time>2026 &ndash; sekarang</time><h4>Mahasiswa Sistem Informasi, Universitas Tanjungpura</h4><p>Organisasi: belum ada.</p></li>
+        <li><time>2025 &ndash; 2026</time><h4>Rohis</h4><p>Anggota organisasi kerohanian Islam.</p></li>
+        <li><time>2024 &ndash; 2025</time><h4>Organisasi Futsal</h4><p>Anggota organisasi futsal.</p></li>
+      </ol>
+      <h3 class="sub">Kepanitiaan</h3>
+      <p class="muted">Belum ada pengalaman kepanitiaan.</p>
+    </div>
+    <div class="reveal">
+      <h3 class="sub">Prestasi</h3>
+      <ul class="awards">
+        <li><span class="ic">&#9733;</span><div><h4>OSN Kebumian</h4><p>Tingkat Kabupaten</p></div></li>
+        <li><span class="ic">&#9733;</span><div><h4>O2SN Badminton</h4><p>Juara</p></div></li>
+        <li><span class="ic">&#9733;</span><div><h4>Lomba Mobile Legends</h4><p>Peserta tingkat Kabupaten</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROYEK -->
+<section class="section" id="proyek">
+  <div class="head reveal"><span class="idx">03 / Karya</span><h2>Proyek &amp; Karya</h2><p class="muted">Hasil karya yang saya buat di VS Code.</p></div>
+
+  <div class="cards" id="projectList"></div>
+  <p class="empty-note muted" id="projectEmpty" hidden>Belum ada proyek.</p>
+  <p class="more reveal"><a class="btn ghost" href="https://github.com/dikyfirerza-byte" target="_blank" rel="noopener">Lihat semua di GitHub</a></p>
+</section>
+
+<!-- KEGIATAN SI -->
+<section class="section" id="kegiatan">
+  <div class="head reveal"><span class="idx">04 / Kegiatan</span><h2>Kegiatan Sistem Informasi</h2><p class="muted">Catatan materi dari narasumber dan dokumentasi kegiatan.</p></div>
+
+  <div class="cards" id="kegiatanList"></div>
+  <p class="empty-note muted" id="kegiatanEmpty" hidden>Belum ada kegiatan yang ditambahkan.</p>
+</section>
+
+<!-- GALERI -->
+<section class="section" id="galeri">
+  <div class="head reveal"><span class="idx">05 / Galeri</span><h2>Galeri Dokumentasi</h2><p class="muted">Momen dari hobi dan keahlian: olahraga, gaming, dan belajar.</p></div>
+
+  <div class="gallery" id="galeriList"></div>
+  <p class="empty-note muted" id="galeriEmpty" hidden>Belum ada foto dokumentasi.</p>
+</section>
+
+<!-- KONTAK -->
+<section class="section" id="kontak">
+  <div class="head reveal"><span class="idx">06 / Kontak</span><h2>Kontak &amp; Sosial Media</h2></div>
+  <div class="grid two">
+    <div class="reveal">
+      <ul class="links">
+        <li><a href="https://wa.me/6283152472776" target="_blank" rel="noopener"><b>WhatsApp</b><span>083152472776</span></a></li>
+        <li><a href="https://instagram.com/kyyfrzaa" target="_blank" rel="noopener"><b>Instagram</b><span>@kyyfrzaa</span></a></li>
+        <li><a href="https://github.com/dikyfirerza-byte" target="_blank" rel="noopener"><b>GitHub</b><span>dikyfirerza-byte</span></a></li>
+        <li><a href="https://open.spotify.com/search/juskidii" target="_blank" rel="noopener"><b>Spotify</b><span>juskidii</span></a></li>
+        <li><a href="mailto:dikyfirerza@gmail.com"><b>Email</b><span>dikyfirerza@gmail.com</span></a></li>
+      </ul>
+    </div>
+    <form class="card form reveal" id="contactForm" novalidate>
+      <h3>Kirim Pesan</h3>
+      <label>Nama<input name="name" required maxlength="60" autocomplete="name"></label>
+      <label>Email (opsional)<input name="email" type="email" maxlength="80" autocomplete="email"></label>
+      <label>Pesan<textarea name="msg" rows="4" required maxlength="600"></textarea></label>
+      <div class="cta">
+        <button class="btn primary" type="button" data-send="wa">Kirim via WhatsApp</button>
+        <button class="btn ghost" type="button" data-send="mail">Kirim via Email</button>
+      </div>
+      <p class="muted small">Pesan akan dibuka di aplikasi WhatsApp atau email Anda, tinggal tekan kirim.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <svg class="logo" viewBox="0 0 100 100"><use href="#wolf"/></svg>
+  <p>&copy; 2026 Diky Firerza &middot; Sistem Informasi, Universitas Tanjungpura</p>
+</footer>
+
+<!-- DOCK: musik, efek, edit -->
+<div class="dock" id="dock">
+  <button id="musicBtn" type="button" aria-pressed="false" title="Putar / jeda musik">&#9835; <span>Musik</span></button>
+  <button id="prevBtn" type="button" title="Lagu sebelumnya" aria-label="Lagu sebelumnya">&#9198;</button>
+  <button id="nextBtn" type="button" title="Lagu berikutnya" aria-label="Lagu berikutnya">&#9197;</button>
+  <input id="vol" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Volume">
+  <button id="listBtn" type="button" aria-expanded="false" aria-controls="playlist" title="Daftar lagu &amp; unggah musik">&#9776; <span>Lagu</span></button>
+  <i class="sep" aria-hidden="true"></i>
+  <button id="fxBtn" type="button" aria-pressed="true" title="Nyalakan / matikan animasi">&#10022; <span>Efek</span></button>
+</div>
+
+<div class="playlist" id="playlist" hidden>
+  <div class="pl-head"><b>Daftar Lagu</b><small id="nowPlaying">&mdash;</small></div>
+  <ul id="trackList"></ul>
+  <div id="ownerTools" hidden>
+  <label class="btn primary small upload">+ Unggah lagu
+    <input type="file" id="songInput" accept="audio/*,.mp3,.m4a,.wav,.ogg,.aac,.flac,.opus" multiple hidden>
+  </label>
+  <p class="muted small">Lagu yang diunggah tersimpan di browser ini saja, jadi hanya kamu yang mendengarnya. Agar terdengar oleh semua pengunjung, taruh file mp3 di folder yang sama dengan file HTML lalu tulis namanya di daftar <code>SITE_TRACKS</code> pada kode.</p>
+  </div>
+</div>
+
+<audio id="bgm" preload="none"></audio>
+
+<dialog id="demoDlg"><div class="demo-bar"><b id="demoTitle"></b><button type="button" id="demoClose" aria-label="Tutup">&times;</button></div><iframe id="demoFrame" title="Demo proyek" sandbox="allow-scripts allow-same-origin allow-forms"></iframe></dialog>
+<dialog id="codeDlg"><div class="demo-bar"><b id="codeTitle"></b><button type="button" id="codeClose" aria-label="Tutup">&times;</button></div>
+  <div class="code-actions"><button type="button" class="btn small ghost" id="codeCopy">Salin kode</button><button type="button" class="btn small primary" id="codeDl">Unduh .py</button></div>
+  <pre><code id="codeBody"></code></pre></dialog>
+<dialog id="lightbox"><button type="button" id="lbClose" aria-label="Tutup">&times;</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>window.DEMOS={"kalkulator": "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImlkIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIj4KPHRpdGxlPkthbGt1bGF0b3I8L3RpdGxlPgo8c3R5bGU+Cip7Ym94LXNpemluZzpib3JkZXItYm94O21hcmdpbjowO3BhZGRpbmc6MDtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZn0KYm9keXttaW4taGVpZ2h0OjEwMHZoO2Rpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpjZW50ZXI7anVzdGlmeS1jb250ZW50OmNlbnRlcjtiYWNrZ3JvdW5kOiMyYjJmM2E7cGFkZGluZzoxNnB4fQoud2lue3dpZHRoOjMyMHB4O2hlaWdodDo0MjBweDtiYWNrZ3JvdW5kOiNEQ0U2RjE7Ym9yZGVyLXJhZGl1czo2cHg7Ym94LXNoYWRvdzowIDEycHggNDBweCByZ2JhKDAsMCwwLC41KTtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO292ZXJmbG93OmhpZGRlbn0KLnRpdGxle2JhY2tncm91bmQ6I2ZmZjtjb2xvcjojMjIyO2ZvbnQtc2l6ZToxM3B4O3BhZGRpbmc6NnB4IDEwcHg7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgI2NjZH0KI2xheWFye21hcmdpbjoyMHB4IDE1cHg7cGFkZGluZzoxMnB4IDhweDtmb250LXNpemU6MjJweDt0ZXh0LWFsaWduOnJpZ2h0O2JhY2tncm91bmQ6I2ZmZjtjb2xvcjojMjIyO2JvcmRlcjoycHggaW5zZXQgI2JiYjtvdXRsaW5lOm5vbmU7d2lkdGg6Y2FsYygxMDAlIC0gMzBweCl9Ci5wYWR7ZmxleDoxO2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLXJvd3M6cmVwZWF0KDQsMWZyKTtwYWRkaW5nOjAgMTBweCAxMHB4fQoucm93e2Rpc3BsYXk6ZmxleH0KYnV0dG9ue2ZsZXg6MTttYXJnaW46NHB4O2JvcmRlcjowO2ZvbnQtc2l6ZToxNnB4O2ZvbnQtd2VpZ2h0OmJvbGQ7Y29sb3I6IzAwMDtiYWNrZ3JvdW5kOiNmZmY7Y3Vyc29yOnBvaW50ZXI7dHJhbnNpdGlvbjpmaWx0ZXIgLjE1c30KYnV0dG9uOmhvdmVye2ZpbHRlcjpicmlnaHRuZXNzKC45Myl9YnV0dG9uOmFjdGl2ZXtmaWx0ZXI6YnJpZ2h0bmVzcyguODUpfQoub3B7YmFja2dyb3VuZDojRjM5QzEyfS5lcXtiYWNrZ3JvdW5kOiMyN0FFNjB9LmNscntiYWNrZ3JvdW5kOiNFNzRDM0N9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgY2xhc3M9IndpbiI+CiAgPGRpdiBjbGFzcz0idGl0bGUiPkthbGt1bGF0b3I8L2Rpdj4KICA8aW5wdXQgaWQ9ImxheWFyIiB0eXBlPSJ0ZXh0IiBhdXRvY29tcGxldGU9Im9mZiIgYXJpYS1sYWJlbD0iTGF5YXIga2Fsa3VsYXRvciI+CiAgPGRpdiBjbGFzcz0icGFkIiBpZD0icGFkIj48L2Rpdj4KPC9kaXY+CjxzY3JpcHQ+CmNvbnN0IGxheWFyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2xheWFyJyk7CmNvbnN0IGRhZnRhciA9IFtbIjciLCI4IiwiOSIsIi8iXSxbIjQiLCI1IiwiNiIsIioiXSxbIjEiLCIyIiwiMyIsIi0iXSxbIkMiLCIwIiwiPSIsIisiXV07CmNvbnN0IHBhZCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwYWQnKTsKZGFmdGFyLmZvckVhY2goYmFyaXMgPT4gewogIGNvbnN0IHIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsgci5jbGFzc05hbWUgPSAncm93JzsKICBiYXJpcy5mb3JFYWNoKHQgPT4gewogICAgY29uc3QgYiA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpOyBiLnRleHRDb250ZW50ID0gdDsKICAgIGlmICh0ID09PSAnPScpIHsgYi5jbGFzc05hbWUgPSAnZXEnOyBiLm9uY2xpY2sgPSBoYXNpbDsgfQogICAgZWxzZSBpZiAodCA9PT0gJ0MnKSB7IGIuY2xhc3NOYW1lID0gJ2Nscic7IGIub25jbGljayA9IGhhcHVzOyB9CiAgICBlbHNlIHsgaWYgKCcrLSovJy5pbmNsdWRlcyh0KSkgYi5jbGFzc05hbWUgPSAnb3AnOyBiLm9uY2xpY2sgPSAoKSA9PiB0ZWthbih0KTsgfQogICAgci5hcHBlbmRDaGlsZChiKTsKICB9KTsKICBwYWQuYXBwZW5kQ2hpbGQocik7Cn0pOwpmdW5jdGlvbiB0ZWthbih0KSB7IGxheWFyLnZhbHVlICs9IHQ7IH0KZnVuY3Rpb24gaGFzaWwoKSB7IGxheWFyLnZhbHVlID0gJ0hlbGxvIFdvcmxkJzsgfQpmdW5jdGlvbiBoYXB1cygpIHsgbGF5YXIudmFsdWUgPSAnJzsgfQo8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+Cg==", "login": "PCFET0NUWVBFIGh0bWw+DQo8aHRtbCBsYW5nPSJpZCI+DQo8aGVhZD4NCiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+DQogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPg0KICAgIDx0aXRsZT5IYWxhbWFuIExvZ2luPC90aXRsZT4NCiAgICA8c3R5bGU+DQogICAgICAgICogew0KICAgICAgICAgICAgbWFyZ2luOiAwOw0KICAgICAgICAgICAgcGFkZGluZzogMDsNCiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7DQogICAgICAgICAgICBmb250LWZhbWlseTogJ1NlZ29lIFVJJywgVGFob21hLCBHZW5ldmEsIFZlcmRhbmEsIHNhbnMtc2VyaWY7DQogICAgICAgIH0NCg0KICAgICAgICBib2R5IHsNCiAgICAgICAgICAgIG1pbi1oZWlnaHQ6IDEwMHZoOw0KICAgICAgICAgICAgZGlzcGxheTogZmxleDsNCiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyOw0KICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjsNCiAgICAgICAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxMzVkZWcsICM0ZjQ2ZTUsICMwNmI2ZDQpOw0KICAgICAgICAgICAgcGFkZGluZzogMjBweDsNCiAgICAgICAgfQ0KDQogICAgICAgIC5sb2dpbi1jYXJkIHsNCiAgICAgICAgICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7DQogICAgICAgICAgICB3aWR0aDogMTAwJTsNCiAgICAgICAgICAgIG1heC13aWR0aDogNDAwcHg7DQogICAgICAgICAgICBwYWRkaW5nOiAzNXB4IDMwcHg7DQogICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxNnB4Ow0KICAgICAgICAgICAgYm94LXNoYWRvdzogMCAxMHB4IDI1cHggcmdiYSgwLCAwLCAwLCAwLjE1KTsNCiAgICAgICAgfQ0KDQogICAgICAgIC5sb2dpbi1oZWFkZXIgew0KICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOw0KICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjVweDsNCiAgICAgICAgfQ0KDQogICAgICAgIC5sb2dpbi1oZWFkZXIgaDIgew0KICAgICAgICAgICAgZm9udC1zaXplOiAyNnB4Ow0KICAgICAgICAgICAgY29sb3I6ICMxZTI5M2I7DQogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiA4cHg7DQogICAgICAgIH0NCg0KICAgICAgICAubG9naW4taGVhZGVyIHAgew0KICAgICAgICAgICAgY29sb3I6ICM2NDc0OGI7DQogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7DQogICAgICAgIH0NCg0KICAgICAgICAuZm9ybS1ncm91cCB7DQogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4Ow0KICAgICAgICB9DQoNCiAgICAgICAgLmZvcm0tZ3JvdXAgbGFiZWwgew0KICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7DQogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiA2cHg7DQogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7DQogICAgICAgICAgICBmb250LXdlaWdodDogNjAwOw0KICAgICAgICAgICAgY29sb3I6ICMzMzQxNTU7DQogICAgICAgIH0NCg0KICAgICAgICAuZm9ybS1ncm91cCBpbnB1dCB7DQogICAgICAgICAgICB3aWR0aDogMTAwJTsNCiAgICAgICAgICAgIHBhZGRpbmc6IDEycHggMTRweDsNCiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDsNCiAgICAgICAgICAgIGJvcmRlcjogMS41cHggc29saWQgI2NiZDVlMTsNCiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDhweDsNCiAgICAgICAgICAgIG91dGxpbmU6IG5vbmU7DQogICAgICAgICAgICB0cmFuc2l0aW9uOiBib3JkZXItY29sb3IgMC4ycywgYm94LXNoYWRvdyAwLjJzOw0KICAgICAgICB9DQoNCiAgICAgICAgLmZvcm0tZ3JvdXAgaW5wdXQ6Zm9jdXMgew0KICAgICAgICAgICAgYm9yZGVyLWNvbG9yOiAjNGY0NmU1Ow0KICAgICAgICAgICAgYm94LXNoYWRvdzogMCAwIDAgM3B4IHJnYmEoNzksIDcwLCAyMjksIDAuMTUpOw0KICAgICAgICB9DQoNCiAgICAgICAgLmZvcm0tb3B0aW9ucyB7DQogICAgICAgICAgICBkaXNwbGF5OiBmbGV4Ow0KICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuOw0KICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjsNCiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTNweDsNCiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDIycHg7DQogICAgICAgIH0NCg0KICAgICAgICAucmVtZW1iZXItbWUgew0KICAgICAgICAgICAgZGlzcGxheTogZmxleDsNCiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7DQogICAgICAgICAgICBnYXA6IDZweDsNCiAgICAgICAgICAgIGNvbG9yOiAjNDc1NTY5Ow0KICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyOw0KICAgICAgICB9DQoNCiAgICAgICAgLnJlbWVtYmVyLW1lIGlucHV0IHsNCiAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjsNCiAgICAgICAgfQ0KDQogICAgICAgIC5mb3Jnb3QtcGFzc3dvcmQgew0KICAgICAgICAgICAgY29sb3I6ICM0ZjQ2ZTU7DQogICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7DQogICAgICAgICAgICBmb250LXdlaWdodDogNTAwOw0KICAgICAgICB9DQoNCiAgICAgICAgLmZvcmdvdC1wYXNzd29yZDpob3ZlciB7DQogICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsNCiAgICAgICAgfQ0KDQogICAgICAgIC5idG4tbG9naW4gew0KICAgICAgICAgICAgd2lkdGg6IDEwMCU7DQogICAgICAgICAgICBwYWRkaW5nOiAxMnB4Ow0KICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzRmNDZlNTsNCiAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTsNCiAgICAgICAgICAgIGJvcmRlcjogbm9uZTsNCiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDhweDsNCiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTVweDsNCiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7DQogICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7DQogICAgICAgICAgICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuMnMsIHRyYW5zZm9ybSAwLjFzOw0KICAgICAgICB9DQoNCiAgICAgICAgLmJ0bi1sb2dpbjpob3ZlciB7DQogICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNDMzOGNhOw0KICAgICAgICB9DQoNCiAgICAgICAgLmJ0bi1sb2dpbjphY3RpdmUgew0KICAgICAgICAgICAgdHJhbnNmb3JtOiBzY2FsZSgwLjk5KTsNCiAgICAgICAgfQ0KDQogICAgICAgIC5yZWdpc3Rlci1saW5rIHsNCiAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsNCiAgICAgICAgICAgIG1hcmdpbi10b3A6IDIwcHg7DQogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7DQogICAgICAgICAgICBjb2xvcjogIzY0NzQ4YjsNCiAgICAgICAgfQ0KDQogICAgICAgIC5yZWdpc3Rlci1saW5rIGEgew0KICAgICAgICAgICAgY29sb3I6ICM0ZjQ2ZTU7DQogICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7DQogICAgICAgICAgICBmb250LXdlaWdodDogNjAwOw0KICAgICAgICB9DQoNCiAgICAgICAgLnJlZ2lzdGVyLWxpbmsgYTpob3ZlciB7DQogICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsNCiAgICAgICAgfQ0KICAgIDwvc3R5bGU+DQo8L2hlYWQ+DQo8Ym9keT4NCg0KICAgIDxkaXYgY2xhc3M9ImxvZ2luLWNhcmQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbi1oZWFkZXIiPg0KICAgICAgICAgICAgPGgyPlNlbGFtYXQgRGF0YW5nPC9oMj4NCiAgICAgICAgICAgIDxwPlNpbGFrYW4gbWFzdWsga2UgYWt1biBBbmRhPC9wPg0KICAgICAgICA8L2Rpdj4NCg0KICAgICAgICA8Zm9ybSBhY3Rpb249IiMiIG1ldGhvZD0iUE9TVCI+DQogICAgICAgICAgICA8ZGl2IGNsYXNzPSJmb3JtLWdyb3VwIj4NCiAgICAgICAgICAgICAgICA8bGFiZWwgZm9yPSJlbWFpbCI+RW1haWwgYXRhdSBVc2VybmFtZTwvbGFiZWw+DQogICAgICAgICAgICAgICAgPGlucHV0IA0KICAgICAgICAgICAgICAgICAgICB0eXBlPSJ0ZXh0IiANCiAgICAgICAgICAgICAgICAgICAgaWQ9ImVtYWlsIiANCiAgICAgICAgICAgICAgICAgICAgbmFtZT0iZW1haWwiIA0KICAgICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj0ibmFtYUBlbWFpbC5jb20iIA0KICAgICAgICAgICAgICAgICAgICByZXF1aXJlZCANCiAgICAgICAgICAgICAgICAgICAgYXV0b2NvbXBsZXRlPSJ1c2VybmFtZSINCiAgICAgICAgICAgICAgICA+DQogICAgICAgICAgICA8L2Rpdj4NCg0KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9ybS1ncm91cCI+DQogICAgICAgICAgICAgICAgPGxhYmVsIGZvcj0icGFzc3dvcmQiPkthdGEgU2FuZGk8L2xhYmVsPg0KICAgICAgICAgICAgICAgIDxpbnB1dCANCiAgICAgICAgICAgICAgICAgICAgdHlwZT0icGFzc3dvcmQiIA0KICAgICAgICAgICAgICAgICAgICBpZD0icGFzc3dvcmQiIA0KICAgICAgICAgICAgICAgICAgICBuYW1lPSJwYXNzd29yZCIgDQogICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPSJNYXN1a2thbiBrYXRhIHNhbmRpIiANCiAgICAgICAgICAgICAgICAgICAgcmVxdWlyZWQgDQogICAgICAgICAgICAgICAgICAgIGF1dG9jb21wbGV0ZT0iY3VycmVudC1wYXNzd29yZCINCiAgICAgICAgICAgICAgICA+DQogICAgICAgICAgICA8L2Rpdj4NCg0KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9ybS1vcHRpb25zIj4NCiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3M9InJlbWVtYmVyLW1lIj4NCiAgICAgICAgICAgICAgICAgICAgPGlucHV0IHR5cGU9ImNoZWNrYm94IiBuYW1lPSJyZW1lbWJlciI+DQogICAgICAgICAgICAgICAgICAgIEluZ2F0IHNheWENCiAgICAgICAgICAgICAgICA8L2xhYmVsPg0KICAgICAgICAgICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJmb3Jnb3QtcGFzc3dvcmQiPkx1cGEga2F0YSBzYW5kaT88L2E+DQogICAgICAgICAgICA8L2Rpdj4NCg0KICAgICAgICAgICAgPGJ1dHRvbiB0eXBlPSJzdWJtaXQiIGNsYXNzPSJidG4tbG9naW4iPk1hc3VrPC9idXR0b24+DQogICAgICAgIDwvZm9ybT4NCg0KICAgICAgICA8ZGl2IGNsYXNzPSJyZWdpc3Rlci1saW5rIj4NCiAgICAgICAgICAgIEJlbHVtIHB1bnlhIGFrdW4/IDxhIGhyZWY9IiMiPkRhZnRhciBzZWthcmFuZzwvYT4NCiAgICAgICAgPC9kaXY+DQogICAgPC9kaXY+DQoNCjwvYm9keT4NCjwvaHRtbD4NCg0K", "flappy": "PCFET0NUWVBFIGh0bWw+DQo8aHRtbCBsYW5nPSJpZCI+DQo8aGVhZD4NCiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+DQogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPg0KICAgIDx0aXRsZT5GbGFwcHkgQmlyZCBIVE1MPC90aXRsZT4NCiAgICA8c3R5bGU+DQogICAgICAgICogew0KICAgICAgICAgICAgbWFyZ2luOiAwOw0KICAgICAgICAgICAgcGFkZGluZzogMDsNCiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7DQogICAgICAgICAgICBmb250LWZhbWlseTogJ1NlZ29lIFVJJywgVGFob21hLCBHZW5ldmEsIFZlcmRhbmEsIHNhbnMtc2VyaWY7DQogICAgICAgIH0NCg0KICAgICAgICBib2R5IHsNCiAgICAgICAgICAgIG1pbi1oZWlnaHQ6IDEwMHZoOw0KICAgICAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEzNWRlZywgIzFlMjkzYiwgIzBmMTcyYSk7DQogICAgICAgICAgICBkaXNwbGF5OiBmbGV4Ow0KICAgICAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7DQogICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsNCiAgICAgICAgICAgIGNvbG9yOiAjZmZmOw0KICAgICAgICB9DQoNCiAgICAgICAgaDEgew0KICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTJweDsNCiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjRweDsNCiAgICAgICAgICAgIGxldHRlci1zcGFjaW5nOiAxcHg7DQogICAgICAgIH0NCg0KICAgICAgICAjZ2FtZS1jb250YWluZXIgew0KICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOw0KICAgICAgICAgICAgYm94LXNoYWRvdzogMCAxMHB4IDMwcHggcmdiYSgwLCAwLCAwLCAwLjUpOw0KICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsNCiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47DQogICAgICAgIH0NCg0KICAgICAgICBjYW52YXMgew0KICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7DQogICAgICAgICAgICBiYWNrZ3JvdW5kOiAjNzBjNWNlOw0KICAgICAgICB9DQoNCiAgICAgICAgLmluc3RydWN0aW9ucyB7DQogICAgICAgICAgICBtYXJnaW4tdG9wOiAxNXB4Ow0KICAgICAgICAgICAgY29sb3I6ICM5NGEzYjg7DQogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7DQogICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7DQogICAgICAgIH0NCg0KICAgICAgICBrYmQgew0KICAgICAgICAgICAgYmFja2dyb3VuZDogIzMzNDE1NTsNCiAgICAgICAgICAgIGNvbG9yOiAjZjhmYWZjOw0KICAgICAgICAgICAgcGFkZGluZzogM3B4IDhweDsNCiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDsNCiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTJweDsNCiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICM0NzU1Njk7DQogICAgICAgIH0NCiAgICA8L3N0eWxlPg0KPC9oZWFkPg0KPGJvZHk+DQoNCiAgICA8aDE+RmxhcHB5IEJpcmQ8L2gxPg0KICAgIDxkaXYgaWQ9ImdhbWUtY29udGFpbmVyIj4NCiAgICAgICAgPGNhbnZhcyBpZD0iZ2FtZUNhbnZhcyIgd2lkdGg9IjM2MCIgaGVpZ2h0PSI1MjAiPjwvY2FudmFzPg0KICAgIDwvZGl2Pg0KICAgIDxwIGNsYXNzPSJpbnN0cnVjdGlvbnMiPlRla2FuIDxrYmQ+U3Bhc2k8L2tiZD4gYXRhdSA8Yj5LbGlrIExheWFyPC9iPiB1bnR1ayB0ZXJiYW5nPC9wPg0KDQogICAgPHNjcmlwdD4NCiAgICAgICAgY29uc3QgY2FudmFzID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImdhbWVDYW52YXMiKTsNCiAgICAgICAgY29uc3QgY3R4ID0gY2FudmFzLmdldENvbnRleHQoIjJkIik7DQoNCiAgICAgICAgLy8gU3RhdHVzIEdhbWU6ICdTVEFSVCcsICdQTEFZJywgJ0dBTUVPVkVSJw0KICAgICAgICBsZXQgZ2FtZVN0YXRlID0gIlNUQVJUIjsNCiAgICAgICAgbGV0IHNjb3JlID0gMDsNCiAgICAgICAgbGV0IGJlc3RTY29yZSA9IGxvY2FsU3RvcmFnZS5nZXRJdGVtKCJmbGFwcHlfYmVzdCIpIHx8IDA7DQoNCiAgICAgICAgLy8gQnVydW5nDQogICAgICAgIGNvbnN0IGJpcmQgPSB7DQogICAgICAgICAgICB4OiA2MCwNCiAgICAgICAgICAgIHk6IDIwMCwNCiAgICAgICAgICAgIHJhZGl1czogMTQsDQogICAgICAgICAgICB2ZWxvY2l0eTogMCwNCiAgICAgICAgICAgIGdyYXZpdHk6IDAuMjUsDQogICAgICAgICAgICBqdW1wOiAtNS4yLA0KICAgICAgICAgICAgZHJhdygpIHsNCiAgICAgICAgICAgICAgICAvLyBCYWRhbiBidXJ1bmcNCiAgICAgICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiNmYWNjMTUiOw0KICAgICAgICAgICAgICAgIGN0eC5iZWdpblBhdGgoKTsNCiAgICAgICAgICAgICAgICBjdHguYXJjKHRoaXMueCwgdGhpcy55LCB0aGlzLnJhZGl1cywgMCwgTWF0aC5QSSAqIDIpOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsKCk7DQogICAgICAgICAgICAgICAgY3R4LmxpbmVXaWR0aCA9IDI7DQogICAgICAgICAgICAgICAgY3R4LnN0cm9rZVN0eWxlID0gIiNjYThhMDQiOw0KICAgICAgICAgICAgICAgIGN0eC5zdHJva2UoKTsNCg0KICAgICAgICAgICAgICAgIC8vIE1hdGENCiAgICAgICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiNmZmYiOw0KICAgICAgICAgICAgICAgIGN0eC5iZWdpblBhdGgoKTsNCiAgICAgICAgICAgICAgICBjdHguYXJjKHRoaXMueCArIDYsIHRoaXMueSAtIDQsIDQsIDAsIE1hdGguUEkgKiAyKTsNCiAgICAgICAgICAgICAgICBjdHguZmlsbCgpOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsU3R5bGUgPSAiIzAwMCI7DQogICAgICAgICAgICAgICAgY3R4LmJlZ2luUGF0aCgpOw0KICAgICAgICAgICAgICAgIGN0eC5hcmModGhpcy54ICsgOCwgdGhpcy55IC0gNCwgMiwgMCwgTWF0aC5QSSAqIDIpOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsKCk7DQoNCiAgICAgICAgICAgICAgICAvLyBQYXJ1aA0KICAgICAgICAgICAgICAgIGN0eC5maWxsU3R5bGUgPSAiI2Y5NzMxNiI7DQogICAgICAgICAgICAgICAgY3R4LmJlZ2luUGF0aCgpOw0KICAgICAgICAgICAgICAgIGN0eC5tb3ZlVG8odGhpcy54ICsgMTAsIHRoaXMueSk7DQogICAgICAgICAgICAgICAgY3R4LmxpbmVUbyh0aGlzLnggKyAxOCwgdGhpcy55ICsgMyk7DQogICAgICAgICAgICAgICAgY3R4LmxpbmVUbyh0aGlzLnggKyAxMCwgdGhpcy55ICsgNik7DQogICAgICAgICAgICAgICAgY3R4LmNsb3NlUGF0aCgpOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsKCk7DQoNCiAgICAgICAgICAgICAgICAvLyBTYXlhcA0KICAgICAgICAgICAgICAgIGN0eC5maWxsU3R5bGUgPSAiI2ZlZjA4YSI7DQogICAgICAgICAgICAgICAgY3R4LmJlZ2luUGF0aCgpOw0KICAgICAgICAgICAgICAgIGN0eC5lbGxpcHNlKHRoaXMueCAtIDQsIHRoaXMueSArIDIsIDYsIDQsIDAsIDAsIE1hdGguUEkgKiAyKTsNCiAgICAgICAgICAgICAgICBjdHguZmlsbCgpOw0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgIHVwZGF0ZSgpIHsNCiAgICAgICAgICAgICAgICB0aGlzLnZlbG9jaXR5ICs9IHRoaXMuZ3Jhdml0eTsNCiAgICAgICAgICAgICAgICB0aGlzLnkgKz0gdGhpcy52ZWxvY2l0eTsNCg0KICAgICAgICAgICAgICAgIC8vIEJhdGFzIGJhd2FoICh0YW5haCkNCiAgICAgICAgICAgICAgICBpZiAodGhpcy55ICsgdGhpcy5yYWRpdXMgPj0gY2FudmFzLmhlaWdodCAtIDQwKSB7DQogICAgICAgICAgICAgICAgICAgIHRoaXMueSA9IGNhbnZhcy5oZWlnaHQgLSA0MCAtIHRoaXMucmFkaXVzOw0KICAgICAgICAgICAgICAgICAgICBnYW1lT3ZlcigpOw0KICAgICAgICAgICAgICAgIH0NCg0KICAgICAgICAgICAgICAgIC8vIEJhdGFzIGF0YXMNCiAgICAgICAgICAgICAgICBpZiAodGhpcy55IC0gdGhpcy5yYWRpdXMgPD0gMCkgew0KICAgICAgICAgICAgICAgICAgICB0aGlzLnkgPSB0aGlzLnJhZGl1czsNCiAgICAgICAgICAgICAgICAgICAgdGhpcy52ZWxvY2l0eSA9IDA7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgIGZsYXAoKSB7DQogICAgICAgICAgICAgICAgdGhpcy52ZWxvY2l0eSA9IHRoaXMuanVtcDsNCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICByZXNldCgpIHsNCiAgICAgICAgICAgICAgICB0aGlzLnkgPSAyMDA7DQogICAgICAgICAgICAgICAgdGhpcy52ZWxvY2l0eSA9IDA7DQogICAgICAgICAgICB9DQogICAgICAgIH07DQoNCiAgICAgICAgLy8gUGlwYSAoT2JzdGFjbGVzKQ0KICAgICAgICBjb25zdCBwaXBlcyA9IFtdOw0KICAgICAgICBjb25zdCBwaXBlV2lkdGggPSA1MjsNCiAgICAgICAgY29uc3QgcGlwZUdhcCA9IDEwMDsNCiAgICAgICAgbGV0IHBpcGVUaW1lciA9IDA7DQoNCiAgICAgICAgZnVuY3Rpb24gYWRkUGlwZSgpIHsNCiAgICAgICAgICAgIGNvbnN0IG1pbkhlaWdodCA9IDUwOw0KICAgICAgICAgICAgY29uc3QgbWF4SGVpZ2h0ID0gY2FudmFzLmhlaWdodCAtIDQwIC0gcGlwZUdhcCAtIG1pbkhlaWdodDsNCiAgICAgICAgICAgIGNvbnN0IHRvcEhlaWdodCA9IE1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSAqIChtYXhIZWlnaHQgLSBtaW5IZWlnaHQgKyAxKSkgKyBtaW5IZWlnaHQ7DQogICAgICAgICAgICBwaXBlcy5wdXNoKHsNCiAgICAgICAgICAgICAgICB4OiBjYW52YXMud2lkdGgsDQogICAgICAgICAgICAgICAgdG9wOiB0b3BIZWlnaHQsDQogICAgICAgICAgICAgICAgYm90dG9tOiB0b3BIZWlnaHQgKyBwaXBlR2FwLA0KICAgICAgICAgICAgICAgIHBhc3NlZDogZmFsc2UNCiAgICAgICAgICAgIH0pOw0KICAgICAgICB9DQoNCiAgICAgICAgZnVuY3Rpb24gZHJhd1BpcGVzKCkgew0KICAgICAgICAgICAgcGlwZXMuZm9yRWFjaChwID0+IHsNCiAgICAgICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiMyMmM1NWUiOw0KICAgICAgICAgICAgICAgIGN0eC5zdHJva2VTdHlsZSA9ICIjMTU4MDNkIjsNCiAgICAgICAgICAgICAgICBjdHgubGluZVdpZHRoID0gMjsNCg0KICAgICAgICAgICAgICAgIC8vIFBpcGEgYXRhcw0KICAgICAgICAgICAgICAgIGN0eC5maWxsUmVjdChwLngsIDAsIHBpcGVXaWR0aCwgcC50b3ApOw0KICAgICAgICAgICAgICAgIGN0eC5zdHJva2VSZWN0KHAueCwgMCwgcGlwZVdpZHRoLCBwLnRvcCk7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxSZWN0KHAueCAtIDMsIHAudG9wIC0gMjAsIHBpcGVXaWR0aCArIDYsIDIwKTsNCiAgICAgICAgICAgICAgICBjdHguc3Ryb2tlUmVjdChwLnggLSAzLCBwLnRvcCAtIDIwLCBwaXBlV2lkdGggKyA2LCAyMCk7DQoNCiAgICAgICAgICAgICAgICAvLyBQaXBhIGJhd2FoDQogICAgICAgICAgICAgICAgY29uc3QgYm90dG9tSGVpZ2h0ID0gY2FudmFzLmhlaWdodCAtIDQwIC0gcC5ib3R0b207DQogICAgICAgICAgICAgICAgY3R4LmZpbGxSZWN0KHAueCwgcC5ib3R0b20sIHBpcGVXaWR0aCwgYm90dG9tSGVpZ2h0KTsNCiAgICAgICAgICAgICAgICBjdHguc3Ryb2tlUmVjdChwLngsIHAuYm90dG9tLCBwaXBlV2lkdGgsIGJvdHRvbUhlaWdodCk7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxSZWN0KHAueCAtIDMsIHAuYm90dG9tLCBwaXBlV2lkdGggKyA2LCAyMCk7DQogICAgICAgICAgICAgICAgY3R4LnN0cm9rZVJlY3QocC54IC0gMywgcC5ib3R0b20sIHBpcGVXaWR0aCArIDYsIDIwKTsNCiAgICAgICAgICAgIH0pOw0KICAgICAgICB9DQoNCiAgICAgICAgZnVuY3Rpb24gdXBkYXRlUGlwZXMoKSB7DQogICAgICAgICAgICBwaXBlVGltZXIrKzsNCiAgICAgICAgICAgIGlmIChwaXBlVGltZXIgJSAxMTAgPT09IDApIHsNCiAgICAgICAgICAgICAgICBhZGRQaXBlKCk7DQogICAgICAgICAgICB9DQoNCiAgICAgICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgcGlwZXMubGVuZ3RoOyBpKyspIHsNCiAgICAgICAgICAgICAgICBsZXQgcCA9IHBpcGVzW2ldOw0KICAgICAgICAgICAgICAgIHAueCAtPSAxLjg7DQoNCiAgICAgICAgICAgICAgICAvLyBEZXRla3NpIFRhYnJha2FuDQogICAgICAgICAgICAgICAgaWYgKA0KICAgICAgICAgICAgICAgICAgICBiaXJkLnggKyBiaXJkLnJhZGl1cyA+IHAueCAmJg0KICAgICAgICAgICAgICAgICAgICBiaXJkLnggLSBiaXJkLnJhZGl1cyA8IHAueCArIHBpcGVXaWR0aA0KICAgICAgICAgICAgICAgICkgew0KICAgICAgICAgICAgICAgICAgICBpZiAoYmlyZC55IC0gYmlyZC5yYWRpdXMgPCBwLnRvcCB8fCBiaXJkLnkgKyBiaXJkLnJhZGl1cyA+IHAuYm90dG9tKSB7DQogICAgICAgICAgICAgICAgICAgICAgICBnYW1lT3ZlcigpOw0KICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgfQ0KDQogICAgICAgICAgICAgICAgLy8gVGFtYmFoIHNrb3IgamlrYSBiZXJoYXNpbCBsZXdhdCBwaXBhDQogICAgICAgICAgICAgICAgaWYgKCFwLnBhc3NlZCAmJiBwLnggKyBwaXBlV2lkdGggPCBiaXJkLngpIHsNCiAgICAgICAgICAgICAgICAgICAgcC5wYXNzZWQgPSB0cnVlOw0KICAgICAgICAgICAgICAgICAgICBzY29yZSsrOw0KICAgICAgICAgICAgICAgICAgICBpZiAoc2NvcmUgPiBiZXN0U2NvcmUpIHsNCiAgICAgICAgICAgICAgICAgICAgICAgIGJlc3RTY29yZSA9IHNjb3JlOw0KICAgICAgICAgICAgICAgICAgICAgICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oImZsYXBweV9iZXN0IiwgYmVzdFNjb3JlKTsNCiAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIH0NCg0KICAgICAgICAgICAgLy8gSGFwdXMgcGlwYSB5YW5nIGtlbHVhciBsYXlhciBraXJpDQogICAgICAgICAgICBpZiAocGlwZXMubGVuZ3RoID4gMCAmJiBwaXBlc1swXS54IDwgLXBpcGVXaWR0aCAtIDEwKSB7DQogICAgICAgICAgICAgICAgcGlwZXMuc2hpZnQoKTsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfQ0KDQogICAgICAgIC8vIFRhbmFoIChHcm91bmQpDQogICAgICAgIGZ1bmN0aW9uIGRyYXdHcm91bmQoKSB7DQogICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiNkZWQ4OTUiOw0KICAgICAgICAgICAgY3R4LmZpbGxSZWN0KDAsIGNhbnZhcy5oZWlnaHQgLSA0MCwgY2FudmFzLndpZHRoLCA0MCk7DQoNCiAgICAgICAgICAgIC8vIEdhcmlzIHJ1bXB1dCBoaWphdSBkaSBhdGFzIHRhbmFoDQogICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiM3M2JmMmUiOw0KICAgICAgICAgICAgY3R4LmZpbGxSZWN0KDAsIGNhbnZhcy5oZWlnaHQgLSA0MCwgY2FudmFzLndpZHRoLCAxMCk7DQogICAgICAgICAgICBjdHguc3Ryb2tlU3R5bGUgPSAiIzU1OGIyMiI7DQogICAgICAgICAgICBjdHguYmVnaW5QYXRoKCk7DQogICAgICAgICAgICBjdHgubW92ZVRvKDAsIGNhbnZhcy5oZWlnaHQgLSA0MCk7DQogICAgICAgICAgICBjdHgubGluZVRvKGNhbnZhcy53aWR0aCwgY2FudmFzLmhlaWdodCAtIDQwKTsNCiAgICAgICAgICAgIGN0eC5zdHJva2UoKTsNCiAgICAgICAgfQ0KDQogICAgICAgIC8vIFRhbXBpbGFuIFVJIFRla3MNCiAgICAgICAgZnVuY3Rpb24gZHJhd1VJKCkgew0KICAgICAgICAgICAgY3R4LmZpbGxTdHlsZSA9ICIjZmZmIjsNCiAgICAgICAgICAgIGN0eC5zdHJva2VTdHlsZSA9ICIjMDAwIjsNCiAgICAgICAgICAgIGN0eC5saW5lV2lkdGggPSAzOw0KICAgICAgICAgICAgY3R4LnRleHRBbGlnbiA9ICJjZW50ZXIiOw0KDQogICAgICAgICAgICBpZiAoZ2FtZVN0YXRlID09PSAiU1RBUlQiKSB7DQogICAgICAgICAgICAgICAgY3R4LmZvbnQgPSAiYm9sZCAyNHB4ICdTZWdvZSBVSScsIHNhbnMtc2VyaWYiOw0KICAgICAgICAgICAgICAgIGN0eC5zdHJva2VUZXh0KCJTSUFQIE1BSU4/IiwgY2FudmFzLndpZHRoIC8gMiwgMTgwKTsNCiAgICAgICAgICAgICAgICBjdHguZmlsbFRleHQoIlNJQVAgTUFJTj8iLCBjYW52YXMud2lkdGggLyAyLCAxODApOw0KDQogICAgICAgICAgICAgICAgY3R4LmZvbnQgPSAiMTVweCAnU2Vnb2UgVUknLCBzYW5zLXNlcmlmIjsNCiAgICAgICAgICAgICAgICBjdHguZmlsbFN0eWxlID0gIiNmZWYwOGEiOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsVGV4dCgiS2xpayBhdGF1IHRla2FuIFNwYXNpIHVudHVrIG11bGFpIiwgY2FudmFzLndpZHRoIC8gMiwgMjIwKTsNCiAgICAgICAgICAgIH0gZWxzZSBpZiAoZ2FtZVN0YXRlID09PSAiUExBWSIpIHsNCiAgICAgICAgICAgICAgICBjdHguZm9udCA9ICJib2xkIDM2cHggJ1NlZ29lIFVJJywgc2Fucy1zZXJpZiI7DQogICAgICAgICAgICAgICAgY3R4LnN0cm9rZVRleHQoc2NvcmUsIGNhbnZhcy53aWR0aCAvIDIsIDcwKTsNCiAgICAgICAgICAgICAgICBjdHguZmlsbFRleHQoc2NvcmUsIGNhbnZhcy53aWR0aCAvIDIsIDcwKTsNCiAgICAgICAgICAgIH0gZWxzZSBpZiAoZ2FtZVN0YXRlID09PSAiR0FNRU9WRVIiKSB7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxTdHlsZSA9ICIjZWY0NDQ0IjsNCiAgICAgICAgICAgICAgICBjdHguZm9udCA9ICJib2xkIDI4cHggJ1NlZ29lIFVJJywgc2Fucy1zZXJpZiI7DQogICAgICAgICAgICAgICAgY3R4LnN0cm9rZVRleHQoIkdBTUUgT1ZFUiIsIGNhbnZhcy53aWR0aCAvIDIsIDE4MCk7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxUZXh0KCJHQU1FIE9WRVIiLCBjYW52YXMud2lkdGggLyAyLCAxODApOw0KDQogICAgICAgICAgICAgICAgY3R4LmZpbGxTdHlsZSA9ICIjZmZmIjsNCiAgICAgICAgICAgICAgICBjdHguZm9udCA9ICIxOHB4ICdTZWdvZSBVSScsIHNhbnMtc2VyaWYiOw0KICAgICAgICAgICAgICAgIGN0eC5zdHJva2VUZXh0KCJTa29yOiAiICsgc2NvcmUsIGNhbnZhcy53aWR0aCAvIDIsIDIyNSk7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxUZXh0KCJTa29yOiAiICsgc2NvcmUsIGNhbnZhcy53aWR0aCAvIDIsIDIyNSk7DQoNCiAgICAgICAgICAgICAgICBjdHguc3Ryb2tlVGV4dCgiVGVyYmFpazogIiArIGJlc3RTY29yZSwgY2FudmFzLndpZHRoIC8gMiwgMjU1KTsNCiAgICAgICAgICAgICAgICBjdHguZmlsbFRleHQoIlRlcmJhaWs6ICIgKyBiZXN0U2NvcmUsIGNhbnZhcy53aWR0aCAvIDIsIDI1NSk7DQoNCiAgICAgICAgICAgICAgICBjdHguZm9udCA9ICIxNHB4ICdTZWdvZSBVSScsIHNhbnMtc2VyaWYiOw0KICAgICAgICAgICAgICAgIGN0eC5maWxsU3R5bGUgPSAiI2ZhY2MxNSI7DQogICAgICAgICAgICAgICAgY3R4LmZpbGxUZXh0KCJLbGlrIC8gU3Bhc2kgdW50dWsgbWFpbiBsYWdpIiwgY2FudmFzLndpZHRoIC8gMiwgMzA1KTsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfQ0KDQogICAgICAgIGZ1bmN0aW9uIGdhbWVPdmVyKCkgew0KICAgICAgICAgICAgZ2FtZVN0YXRlID0gIkdBTUVPVkVSIjsNCiAgICAgICAgfQ0KDQogICAgICAgIGZ1bmN0aW9uIHJlc2V0R2FtZSgpIHsNCiAgICAgICAgICAgIHBpcGVzLmxlbmd0aCA9IDA7DQogICAgICAgICAgICBzY29yZSA9IDA7DQogICAgICAgICAgICBwaXBlVGltZXIgPSAwOw0KICAgICAgICAgICAgYmlyZC5yZXNldCgpOw0KICAgICAgICAgICAgZ2FtZVN0YXRlID0gIlBMQVkiOw0KICAgICAgICAgICAgYmlyZC5mbGFwKCk7DQogICAgICAgIH0NCg0KICAgICAgICAvLyBMb29wIEdhbWUgVXRhbWENCiAgICAgICAgZnVuY3Rpb24gZ2FtZUxvb3AoKSB7DQogICAgICAgICAgICBjdHguY2xlYXJSZWN0KDAsIDAsIGNhbnZhcy53aWR0aCwgY2FudmFzLmhlaWdodCk7DQoNCiAgICAgICAgICAgIC8vIEF3YW4gLyBiYWNrZ3JvdW5kIHNlZGVyaGFuYQ0KICAgICAgICAgICAgY3R4LmZpbGxTdHlsZSA9ICJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNCkiOw0KICAgICAgICAgICAgY3R4LmJlZ2luUGF0aCgpOw0KICAgICAgICAgICAgY3R4LmFyYyg4MCwgODAsIDI1LCAwLCBNYXRoLlBJICogMik7DQogICAgICAgICAgICBjdHguYXJjKDExMCwgODAsIDM1LCAwLCBNYXRoLlBJICogMik7DQogICAgICAgICAgICBjdHguYXJjKDE0MCwgODAsIDI1LCAwLCBNYXRoLlBJICogMik7DQogICAgICAgICAgICBjdHguZmlsbCgpOw0KDQogICAgICAgICAgICBjdHguYmVnaW5QYXRoKCk7DQogICAgICAgICAgICBjdHguYXJjKDI2MCwgMTMwLCAyMCwgMCwgTWF0aC5QSSAqIDIpOw0KICAgICAgICAgICAgY3R4LmFyYygyODUsIDEzMCwgMzAsIDAsIE1hdGguUEkgKiAyKTsNCiAgICAgICAgICAgIGN0eC5hcmMoMzEwLCAxMzAsIDIwLCAwLCBNYXRoLlBJICogMik7DQogICAgICAgICAgICBjdHguZmlsbCgpOw0KDQogICAgICAgICAgICBpZiAoZ2FtZVN0YXRlID09PSAiUExBWSIpIHsNCiAgICAgICAgICAgICAgICBiaXJkLnVwZGF0ZSgpOw0KICAgICAgICAgICAgICAgIHVwZGF0ZVBpcGVzKCk7DQogICAgICAgICAgICB9DQoNCiAgICAgICAgICAgIGRyYXdQaXBlcygpOw0KICAgICAgICAgICAgZHJhd0dyb3VuZCgpOw0KICAgICAgICAgICAgYmlyZC5kcmF3KCk7DQogICAgICAgICAgICBkcmF3VUkoKTsNCg0KICAgICAgICAgICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKGdhbWVMb29wKTsNCiAgICAgICAgfQ0KDQogICAgICAgIC8vIEtvbnRyb2wgSW5wdXQNCiAgICAgICAgZnVuY3Rpb24gaGFuZGxlSW5wdXQoKSB7DQogICAgICAgICAgICBpZiAoZ2FtZVN0YXRlID09PSAiU1RBUlQiKSB7DQogICAgICAgICAgICAgICAgZ2FtZVN0YXRlID0gIlBMQVkiOw0KICAgICAgICAgICAgICAgIGJpcmQuZmxhcCgpOw0KICAgICAgICAgICAgfSBlbHNlIGlmIChnYW1lU3RhdGUgPT09ICJQTEFZIikgew0KICAgICAgICAgICAgICAgIGJpcmQuZmxhcCgpOw0KICAgICAgICAgICAgfSBlbHNlIGlmIChnYW1lU3RhdGUgPT09ICJHQU1FT1ZFUiIpIHsNCiAgICAgICAgICAgICAgICByZXNldEdhbWUoKTsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfQ0KDQogICAgICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJrZXlkb3duIiwgKGUpID0+IHsNCiAgICAgICAgICAgIGlmIChlLmNvZGUgPT09ICJTcGFjZSIpIHsNCiAgICAgICAgICAgICAgICBlLnByZXZlbnREZWZhdWx0KCk7DQogICAgICAgICAgICAgICAgaGFuZGxlSW5wdXQoKTsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfSk7DQoNCiAgICAgICAgY2FudmFzLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgaGFuZGxlSW5wdXQpOw0KDQogICAgICAgIC8vIE11bGFpIExvb3ANCiAgICAgICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKGdhbWVMb29wKTsNCiAgICA8L3NjcmlwdD4NCg0KPC9ib2R5Pg0KPC9odG1sPg0KDQo="};</script>
+<script>window.CODES={"kalkulator": "import tkinter as tk\n\n# Membuat jendela\njendela = tk.Tk()\njendela.title(\"Kalkulator\")\njendela.geometry(\"320x420\")\njendela.configure(bg=\"#DCE6F1\")\njendela.resizable(False, False)\n\n# Layar kalkulator\nlayar = tk.Entry(\n    jendela,\n    font=(\"Arial\", 22),\n    justify=\"right\",\n    bg=\"white\",\n    fg=\"#222222\",\n    bd=5\n)\nlayar.pack(fill=\"x\", padx=15, pady=20, ipady=10)\n\n# Fungsi tombol\ndef tekan(tombol):\n    layar.insert(tk.END, tombol)\n\n# Fungsi tombol sama dengan\ndef hasil():\n    layar.delete(0, tk.END)\n    layar.insert(0, \"Hello World\")\n\n# Fungsi hapus\ndef hapus():\n    layar.delete(0, tk.END)\n\n# Tombol kalkulator\ndaftar_tombol = [\n    [\"7\", \"8\", \"9\", \"/\"],\n    [\"4\", \"5\", \"6\", \"*\"],\n    [\"1\", \"2\", \"3\", \"-\"],\n    [\"C\", \"0\", \"=\", \"+\"]\n]\n\n# Membuat tombol\nfor baris in daftar_tombol:\n    bingkai = tk.Frame(jendela, bg=\"#DCE6F1\")\n    bingkai.pack(expand=True, fill=\"both\", padx=10)\n\n    for tombol in baris:\n        if tombol == \"=\":\n            perintah = hasil\n            warna = \"#27AE60\"\n        elif tombol == \"C\":\n            perintah = hapus\n            warna = \"#E74C3C\"\n        elif tombol in [\"+\", \"-\", \"*\", \"/\"]:\n            perintah = lambda t=tombol: tekan(t)\n            warna = \"#F39C12\"\n        else:\n            perintah = lambda t=tombol: tekan(t)\n            warna = \"#FFFFFF\"\n\n        tk.Button(\n            bingkai,\n            text=tombol,\n            font=(\"Arial\", 16, \"bold\"),\n            bg=warna,\n            fg=\"black\",\n            command=perintah,\n            relief=\"flat\"\n        ).pack(\n            side=\"left\",\n            expand=True,\n            fill=\"both\",\n            padx=4,\n            pady=4\n        )\n\n# Menjalankan aplikasi\njendela.mainloop()\n"};</script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const safeUrl = u => { if (/^proyek\/[\w.-]+\.html$/.test(u)) return u; try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch { return ''; } };
+
+  /* ---------- Penyimpanan lokal (hanya di browser ini) ---------- */
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem('dky_' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem('dky_' + k, JSON.stringify(v)); return true; } catch { toast('Penyimpanan browser penuh, coba foto yang lebih kecil.'); return false; } },
+    del(k) { try { localStorage.removeItem('dky_' + k); } catch {} }
+  };
+
+  let toastT;
+  function toast(msg) {
+    const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3800);
+  }
+
+  /* ---------- Navbar ---------- */
+  const nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  $$('#menu a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+
+  const links = $$('#menu a[href^="#"]');
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    $$('main section[id]').forEach(s => spy.observe(s));
+  }
+
+  /* ---------- Reveal saat scroll ---------- */
+  function observeReveal() {
+    const els = $$('.reveal:not(.in)');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    els.forEach(e => io.observe(e));
+  }
+  observeReveal();
+
+  /* ---------- Efek: kanvas partikel ---------- */
+  const cv = $('#bg'), cx = cv.getContext('2d');
+  let W, H, pts = [], raf = 0, mouse = { x: -999, y: -999 };
+  function sizeCanvas() {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
+    const n = W < 700 ? 34 : Math.min(85, Math.floor(W / 17));
+    pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: Math.random() * 1.6 + .4 }));
+  }
+  function frame() {
+    cx.clearRect(0, 0, W, H);
+    for (const p of pts) {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+      if (d2 < 12100) { const d = Math.sqrt(d2) || 1; p.x += dx / d * 1.4; p.y += dy / d * 1.4; }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; else if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.283); cx.fillStyle = 'rgba(205,205,218,.55)'; cx.fill();
+    }
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i], b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+      if (d2 < 14400) { cx.strokeStyle = `rgba(160,160,175,${(1 - Math.sqrt(d2) / 120) * .28})`; cx.lineWidth = 1; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); }
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  addEventListener('mouseout', () => { mouse.x = mouse.y = -999; });
+  addEventListener('resize', () => { if (fx) sizeCanvas(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(raf); raf = 0; } else if (fx && !raf) frame();
+  });
+
+  /* ---------- Efek ketik pada tagline ---------- */
+  const words = ['Web Development', 'Python', 'UI/UX', 'Sistem Informasi'];
+  const typed = $('#typed'); let wi = 0, ci = words[0].length, del = false, typeT;
+  function typeLoop() {
+    if (!fx) return;
+    const w = words[wi];
+    typed.textContent = w.slice(0, ci);
+    if (!del && ci === w.length) { del = true; typeT = setTimeout(typeLoop, 1400); return; }
+    if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; }
+    ci += del ? -1 : 1;
+    typeT = setTimeout(typeLoop, del ? 40 : 85);
+  }
+
+  /* ---------- Tombol efek / edit ---------- */
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let fx = store.get('fx', !reduce);
+  const fxBtn = $('#fxBtn');
+  function applyFx() {
+    document.body.classList.toggle('no-fx', !fx);
+    fxBtn.setAttribute('aria-pressed', fx);
+    cancelAnimationFrame(raf); raf = 0; clearTimeout(typeT);
+    if (fx) { sizeCanvas(); frame(); typeLoop(); }
+    else { cx.clearRect(0, 0, cv.width, cv.height); typed.textContent = words[0]; }
+  }
+  fxBtn.addEventListener('click', () => { fx = !fx; store.set('fx', fx); applyFx(); toast(fx ? 'Animasi dinyalakan' : 'Animasi dimatikan (lebih ringan)'); });
+  applyFx();
+
+
+  /* ---------- Foto profil ---------- */
+  const photoImg = $('#profilePhoto'), photoWrap = $('#photoWrap');
+  photoImg.addEventListener('load', () => photoWrap.classList.remove('empty'));
+  photoImg.addEventListener('error', () => photoWrap.classList.add('empty'));
+  photoImg.src ='assets/foto1.png';
+
+  /* ---------- Koleksi: proyek, kegiatan, galeri ---------- */
+  const wolfIcon = '<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#wolf"/></svg>';
+  const thumb = img => `<div class="thumb">${img ? `<img src="${img}" alt="" loading="lazy">` : wolfIcon}</div>`;
+  const delBtn = () => '';
+  const fmtDate = d => { if (!d) return ''; const x = new Date(d + 'T00:00:00'); return isNaN(x) ? '' : x.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }); };
+
+  const collections = {
+    projects: {
+      list: '#projectList', empty: '#projectEmpty',
+      // Proyek bawaan. Tambahkan proyek tetap lain di sini jika mau.
+      defaults: [{
+        id: 'd-web', title: 'Website Portofolio Pribadi',
+        desc: 'Website profil pribadi responsif dengan animasi serigala hitam, pemutar musik, dan galeri. Dibuat dengan HTML, CSS, dan JavaScript di VS Code.',
+        tags: 'HTML, CSS, JavaScript', link: 'https://github.com/dikyfirerza-byte', img: ''
+      }, {
+        id: 'd-login', title: 'Halaman Login',
+        desc: 'Halaman login responsif dengan form email/username dan kata sandi, opsi ingat saya, serta tautan daftar. Dibuat dengan HTML dan CSS.',
+        tags: 'HTML, CSS, Form', link: 'proyek/login.html', demo: 'login', img: ''
+      }, {
+        id: 'd-flappy', title: 'Game Flappy Bird',
+        desc: 'Game Flappy Bird yang bisa dimainkan lewat tombol Spasi atau klik layar, lengkap dengan skor dan skor terbaik. Dibuat dengan HTML Canvas dan JavaScript.',
+        tags: 'HTML, CSS, JavaScript, Canvas', link: 'proyek/flappy-bird.html', demo: 'flappy', img: ''
+      }, {
+        id: 'd-kalkulator', title: 'Kalkulator (Python Tkinter)',
+        desc: 'Aplikasi kalkulator desktop dengan antarmuka grafis Tkinter: layar angka, tombol 0-9, operator + - * /, dan tombol hapus (C). Dibuat dengan Python; demo web-nya meniru tampilan aslinya.',
+        tags: 'Python, Tkinter, GUI', link: '', demo: 'kalkulator', code: 'kalkulator', img: ''
+      }],
+      card(it, def) {
+        const link = safeUrl(it.link);
+        const code = it.code && window.CODES && window.CODES[it.code];
+        const demo = it.demo && window.DEMOS && window.DEMOS[it.demo];
+        const tags = (it.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+        return `<article class="item reveal">${delBtn(it, def)}${thumb(it.img)}<div class="body">
+          <h4>${esc(it.title)}</h4><p>${esc(it.desc)}</p>
+          ${tags.length ? `<div class="tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
+          ${demo && code ? `<div class="acts"><button class="go demo-btn" type="button" data-demo="${esc(it.demo)}" data-title="${esc(it.title)}">Buka demo &rarr;</button><button class="go code-btn" type="button" data-code="${esc(it.code)}" data-title="${esc(it.title)}">Lihat kode &rarr;</button></div>`
+            : code ? `<button class="go code-btn" type="button" data-code="${esc(it.code)}" data-title="${esc(it.title)}">Lihat kode &rarr;</button>`
+            : demo ? `<button class="go demo-btn" type="button" data-demo="${esc(it.demo)}" data-title="${esc(it.title)}">Buka demo &rarr;</button>`
+            : link ? `<a class="go" href="${esc(link)}" target="_blank" rel="noopener">Buka proyek &rarr;</a>` : ''}</div></article>`;
+      }
+    },
+    kegiatan: {
+      list: '#kegiatanList', empty: '#kegiatanEmpty', defaults: [],
+      card(it, def) {
+        const link = safeUrl(it.link);
+        const meta = [it.speaker && 'Narasumber: ' + esc(it.speaker), fmtDate(it.date)].filter(Boolean).join(' &middot; ');
+        return `<article class="item reveal">${delBtn(it, def)}${thumb(it.img)}<div class="body">
+          ${meta ? `<span class="meta">${meta}</span>` : ''}<h4>${esc(it.title)}</h4>
+          ${it.desc ? `<p>${esc(it.desc)}</p>` : ''}
+          ${link ? `<a class="go" href="${esc(link)}" target="_blank" rel="noopener">Buka materi &rarr;</a>` : ''}</div></article>`;
+      }
+    },
+    galeri: {
+      list: '#galeriList', empty: '#galeriEmpty', defaults: [],
+      card(it, def) {
+        return `<figure class="shot reveal" data-src="${esc(it.img)}" data-cap="${esc(it.caption || it.cat)}">${delBtn(it, def)}
+          <img src="${esc(it.img)}" alt="${esc(it.caption || 'Foto dokumentasi')}" loading="lazy">
+          <figcaption><small>${esc(it.cat)}</small>${esc(it.caption)}</figcaption></figure>`;
+      }
+    }
+  };
+
+  function renderCol(key) {
+    const c = collections[key];
+    const all = c.defaults.map(d => [d, true]);
+    $(c.list).innerHTML = all.map(([it, def]) => c.card(it, def)).join('');
+    $(c.empty).hidden = all.length > 0;
+  }
+  function renderAll() { Object.keys(collections).forEach(renderCol); observeReveal(); }
+
+  Object.values(collections).forEach(c => {
+    $(c.list).addEventListener('click', e => {
+      const d = e.target.closest('.demo-btn');
+      if (d) { openDemo(d.dataset.demo, d.dataset.title); return; }
+      const cb = e.target.closest('.code-btn');
+      if (cb) { openCode(cb.dataset.code, cb.dataset.title); return; }
+      const shot = e.target.closest('.shot');
+      if (shot) { const lb = $('#lightbox'); $('img', lb).src = shot.dataset.src; $('p', lb).textContent = shot.dataset.cap; lb.showModal(); }
+    });
+  });
+  /* ---------- Demo proyek (jendela pop-up) ---------- */
+  const dlg = $('#demoDlg'), demoFrame = $('#demoFrame');
+  function openDemo(id, title) {
+    const b64 = window.DEMOS && window.DEMOS[id]; if (!b64) { toast('Demo tidak ditemukan'); return; }
+    const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    $('#demoTitle').textContent = title;
+    demoFrame.srcdoc = new TextDecoder().decode(bytes);
+    dlg.showModal();
+  }
+  demoFrame.addEventListener('load', () => { try { demoFrame.contentWindow.focus(); } catch {} });
+  const closeDemo = () => { dlg.close(); demoFrame.srcdoc = ''; };
+  $('#demoClose').addEventListener('click', closeDemo);
+  dlg.addEventListener('cancel', () => { demoFrame.srcdoc = ''; });
+  $('#lbClose').addEventListener('click', () => $('#lightbox').close());
+  $('#lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') e.target.close(); });
+  renderAll();
+
+  /* ---------- Form kontak ---------- */
+  $('#contactForm').addEventListener('click', e => {
+    const b = e.target.closest('[data-send]'); if (!b) return;
+    const f = $('#contactForm').elements, name = f.name.value.trim(), msg = f.msg.value.trim(), mail = f.email.value.trim();
+    if (!name || !msg) { toast('Isi nama dan pesan dulu ya'); return; }
+    if (b.dataset.send === 'wa') {
+      const t = `Halo Diky, saya ${name}.\n\n${msg}` + (mail ? `\n\nEmail saya: ${mail}` : '');
+      window.open('https://wa.me/6283152472776?text=' + encodeURIComponent(t), '_blank', 'noopener');
+    } else {
+      const body = `${msg}\n\nDari: ${name}` + (mail ? ` (${mail})` : '');
+      location.href = 'mailto:dikyfirerza@gmail.com?subject=' + encodeURIComponent('Pesan dari ' + name + ' (portofolio)') + '&body=' + encodeURIComponent(body);
+    }
+  });
+
+  /* ---------- Lihat kode (proyek Python) ---------- */
+  const codeDlg = $('#codeDlg');
+  let codeCur = { id: '', text: '' };
+  function openCode(id, title) {
+    const text = window.CODES && window.CODES[id];
+    if (!text) { toast('Kode tidak ditemukan'); return; }
+    codeCur = { id, text };
+    $('#codeTitle').textContent = title;
+    $('#codeBody').textContent = text;
+    codeDlg.showModal();
+  }
+  $('#codeClose').addEventListener('click', () => codeDlg.close());
+  codeDlg.addEventListener('click', e => { if (e.target === codeDlg) codeDlg.close(); });
+  $('#codeCopy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(codeCur.text); toast('Kode disalin'); }
+    catch { toast('Gagal menyalin, blok kodenya lalu salin manual'); }
+  });
+  $('#codeDl').addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([codeCur.text], { type: 'text/x-python' }));
+    a.download = codeCur.id + '.py'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+
+  /* ---------- Musik ---------- */
+  // Lagu bawaan untuk SEMUA pengunjung: taruh file mp3 di folder yang sama dengan HTML ini,
+  // lalu tulis namanya di sini (huruf besar/kecil harus sama persis).
+  const SITE_TRACKS = [
+    { name: 'Musik 1', src: 'musik1.mp3' }
+    // , { name: 'Lagu lain', src: 'lagu2.mp3' }
+  ];
+  // Lagu yang diunggah lewat tombol "Unggah lagu" disimpan di IndexedDB (hanya di browser ini).
+
+  const AUDIO_RE = /\.(mp3|m4a|wav|ogg|oga|opus|aac|flac|weba|webm|mp4)$/i;
+  const MIME = { mp3: 'audio/mpeg', m4a: 'audio/mp4', mp4: 'audio/mp4', wav: 'audio/wav', ogg: 'audio/ogg', oga: 'audio/ogg', opus: 'audio/ogg', aac: 'audio/aac', flac: 'audio/flac', weba: 'audio/webm', webm: 'audio/webm' };
+  const mimeOf = f => (f.type && f.type.startsWith('audio/')) ? f.type : (MIME[(f.name.split('.').pop() || '').toLowerCase()] || 'audio/mpeg');
+
+  const bgm = $('#bgm'), musicBtn = $('#musicBtn'), vol = $('#vol');
+  const panel = $('#playlist'), listBtn = $('#listBtn'), trackUl = $('#trackList'), nowEl = $('#nowPlaying');
+  let tracks = [], cur = -1, dbp = null;
+
+  vol.value = store.get('vol', 0.5);
+  bgm.volume = +vol.value;
+  vol.addEventListener('input', () => { bgm.volume = +vol.value; store.set('vol', +vol.value); });
+
+  /* Unggah musik: true = semua pengunjung boleh menambah lagu (tersimpan di browser masing-masing),
+     false = tombol unggah disembunyikan kecuali di browser pemilik (buka alamat dengan #owner). */
+  const PUBLIK_BOLEH_UNGGAH = true;
+  if (location.hash === '#owner' || location.hash === '#visitor') {
+    store.set('owner', location.hash === '#owner');
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  const owner = PUBLIK_BOLEH_UNGGAH || store.get('owner', false) === true;
+  $('#ownerTools').hidden = !owner;
+
+  /* IndexedDB */
+  function openDB() {
+    if (dbp) return dbp;
+    dbp = new Promise((res, rej) => {
+      if (!('indexedDB' in window)) return rej(new Error('IndexedDB tidak tersedia'));
+      const rq = indexedDB.open('dky_music', 1);
+      rq.onupgradeneeded = () => rq.result.createObjectStore('tracks', { keyPath: 'id', autoIncrement: true });
+      rq.onsuccess = () => res(rq.result);
+      rq.onerror = () => rej(rq.error);
+    });
+    return dbp;
+  }
+  const tx = (mode, fn) => openDB().then(db => new Promise((res, rej) => {
+    const t = db.transaction('tracks', mode), r = fn(t.objectStore('tracks'));
+    t.oncomplete = () => res(r.result);
+    t.onerror = t.onabort = () => rej(t.error);
+  }));
+
+  /* Daftar lagu */
+  function renderList() {
+    const playing = !bgm.paused;
+    trackUl.innerHTML = tracks.length ? tracks.map((t, i) =>
+      `<li class="${i === cur ? 'on' : ''}${t.missing ? ' miss' : ''}">
+        <button type="button" class="tk" data-i="${i}"><span aria-hidden="true">${i === cur && playing ? '&#9654;' : '&#9835;'}</span>
+          <span class="nm">${esc(t.name)}</span>${t.missing ? '<small>file tidak ditemukan</small>' : ''}</button>
+        ${t.builtin || !owner ? '' : `<button type="button" class="rm" data-rm="${i}" aria-label="Hapus lagu">&times;</button>`}</li>`
+    ).join('') : '<li class="empty muted small">Belum ada lagu.</li>';
+  }
+
+  function setTrack(i) {
+    cur = i;
+    bgm.src = tracks[i].url;
+    bgm.loop = tracks.length === 1;
+    nowEl.textContent = tracks[i].name;
+    renderList();
+  }
+  function play(i = cur < 0 ? 0 : cur) {
+    if (!tracks.length) { if (owner) openPanel(true); toast(owner ? 'Belum ada lagu. Unggah file musik dulu.' : 'Belum ada lagu.'); return; }
+    if (i !== cur || !bgm.getAttribute('src')) setTrack(i);
+    bgm.play().catch(err => {
+      if (err && err.name === 'NotAllowedError') toast('Browser memblokir pemutaran. Tekan tombol Musik lagi.');
+      else { if (tracks[cur] && tracks[cur].builtin) { tracks[cur].missing = true; renderList(); } toast('Lagu tidak bisa diputar. File tidak ditemukan atau formatnya tidak didukung.'); }
+    });
+  }
+  function step(d) {
+    if (tracks.length < 2) { if (cur >= 0) bgm.currentTime = 0; return; }
+    let n = cur;
+    for (let k = 0; k < tracks.length; k++) {
+      n = (n + d + tracks.length) % tracks.length;
+      if (!tracks[n].missing) { play(n); return; }
+    }
+  }
+
+  musicBtn.addEventListener('click', () => { if (!bgm.paused) bgm.pause(); else play(); });
+  $('#prevBtn').addEventListener('click', () => step(-1));
+  $('#nextBtn').addEventListener('click', () => step(1));
+  bgm.addEventListener('play', () => { musicBtn.setAttribute('aria-pressed', true); renderList(); });
+  bgm.addEventListener('pause', () => { musicBtn.setAttribute('aria-pressed', false); renderList(); });
+  bgm.addEventListener('ended', () => step(1));
+  bgm.addEventListener('error', () => {
+    if (cur >= 0 && tracks[cur] && tracks[cur].builtin) { tracks[cur].missing = true; renderList(); }
+  });
+
+  trackUl.addEventListener('click', e => {
+    const rm = e.target.closest('[data-rm]');
+    if (rm) { removeTrack(+rm.dataset.rm); return; }
+    const b = e.target.closest('[data-i]');
+    if (!b) return;
+    const i = +b.dataset.i;
+    if (i === cur && !bgm.paused) bgm.pause(); else play(i);
+  });
+
+  async function removeTrack(i) {
+    const t = tracks[i];
+    if (!t || t.builtin || !confirm('Hapus lagu ini?')) return;
+    if (t.id != null) { try { await tx('readwrite', s => s.delete(t.id)); } catch {} }
+    URL.revokeObjectURL(t.url);
+    const wasCur = i === cur;
+    tracks.splice(i, 1);
+    if (i < cur) cur--;
+    if (wasCur) {
+      bgm.pause(); bgm.removeAttribute('src'); bgm.load(); cur = -1; nowEl.textContent = '\u2014';
+      if (tracks.length) setTrack(Math.min(i, tracks.length - 1));
+    }
+    bgm.loop = tracks.length === 1;
+    renderList();
+  }
+
+  /* Unggah */
+  $('#songInput').addEventListener('change', e => {
+    if (!owner) return;
+    const files = [...e.target.files].filter(f => (f.type && f.type.startsWith('audio/')) || AUDIO_RE.test(f.name));
+    e.target.value = '';
+    if (!files.length) { toast('File harus berupa audio (mp3, m4a, wav, ogg).'); return; }
+    const added = files.map(f => {
+      const blob = new Blob([f], { type: mimeOf(f) });
+      return { id: null, name: f.name.replace(/\.[^.]+$/, ''), url: URL.createObjectURL(blob), blob };
+    });
+    const first = tracks.length;
+    tracks.push(...added);
+    play(first);                       // langsung putar (masih dalam aksi klik pengguna)
+    toast(files.length > 1 ? files.length + ' lagu ditambahkan' : 'Memutar: ' + added[0].name);
+    Promise.all(added.map(async t => {
+      t.id = await tx('readwrite', s => s.add({ name: t.name, blob: t.blob, added: Date.now() }));
+      delete t.blob;
+    })).catch(() => toast('Lagu bisa diputar, tapi tidak bisa disimpan permanen di browser ini (mode privat?).'));
+  });
+
+  /* Panel daftar lagu */
+  function openPanel(open) {
+    panel.hidden = !open;
+    listBtn.setAttribute('aria-expanded', open);
+  }
+  listBtn.addEventListener('click', () => openPanel(panel.hidden));
+  document.addEventListener('click', e => { if (!panel.hidden && !e.target.closest('#playlist, #listBtn')) openPanel(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) openPanel(false); });
+
+  /* Mulai: lagu bawaan + lagu tersimpan */
+  tracks = SITE_TRACKS.map(t => ({ name: t.name, url: t.src, builtin: true }));
+  tracks.filter(t => t.builtin).forEach(t => {         // cek apakah file bawaan benar-benar ada
+    const a = new Audio(); a.preload = 'metadata';
+    a.addEventListener('error', () => { t.missing = true; renderList(); }, { once: true });
+    a.src = t.url;
+  });
+  renderList();
+  if (owner) tx('readonly', s => s.getAll()).then(saved => {
+    saved.forEach(r => tracks.push({ id: r.id, name: r.name, url: URL.createObjectURL(r.blob) }));
+    bgm.loop = tracks.length === 1;
+    renderList();
+  }).catch(() => {});
+})();
+
+</script>
+</body>
+</html>
